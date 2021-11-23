@@ -24,7 +24,7 @@ namespace Lab_04
 
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
-
+            newToolStripMenuItem.PerformClick();
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -85,13 +85,75 @@ namespace Lab_04
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(textoRichTextBox.SelectedRtf);
-            textoRichTextBox.SelectedRtf = "";
+            try
+            {
+                Clipboard.SetText(textoRichTextBox.SelectedRtf);
+                textoRichTextBox.SelectedRtf = "";
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Selecione para recortar");
+            }
+            
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(textoRichTextBox.SelectedRtf);
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textoRichTextBox.SelectedRtf = Clipboard.GetText();
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textoRichTextBox.SelectAll();
+        }
+
+        private void customizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (fontDialog1.ShowDialog().Equals(DialogResult.OK))
+            {
+                textoRichTextBox.SelectionFont = fontDialog1.Font;
+            }
+            
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog().Equals(DialogResult.OK))
+            {
+                textoRichTextBox.SelectionColor = colorDialog1.Color;
+            }
+        }
+
+        private void openToolStripButton_Click(object sender, EventArgs e)
+        {
+            openToolStripMenuItem.PerformClick();
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            saveToolStripMenuItem.PerformClick();
+        }
+
+        private void cutToolStripButton_Click(object sender, EventArgs e)
+        {
+            cutToolStripMenuItem.PerformClick();
+
+        }
+
+        private void copyToolStripButton_Click(object sender, EventArgs e)
+        {
+            copyToolStripMenuItem.PerformClick();
+        }
+
+        private void pasteToolStripButton_Click(object sender, EventArgs e)
+        {
+            pasteToolStripMenuItem.PerformClick();
         }
     }
 }
