@@ -31,5 +31,10 @@ namespace Lab_04
         {
             textoRichTextBox.Rtf = string.Empty;
         }
+
+        private void textoRichTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
